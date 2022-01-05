@@ -1,0 +1,23 @@
+{
+  "name": "cod_class_generator",
+  "version": "1.0.0",
+  "description": "call of duty random class generator\r klajsndflkjnasdlikjfnlaksjdnf",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezmiller92/cod_class_generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ezmiller92/cod_class_generator/issues"
+  },
+  "homepage": "https://github.com/ezmiller92/cod_class_generator#readme",
+  "dependencies": {
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
