@@ -37,8 +37,8 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function randomPerkGenerator() {
+function randPerkGenerator() {
     const randomInt = getRndInteger(0, perkOneOptions.length)
     return perkOneOptions[randomInt]
 }
-console.log('perkOne: ' + randomPerkGenerator())
+console.log('perkOne: ' + randPerkGenerator())
