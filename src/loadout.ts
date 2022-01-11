@@ -1,69 +1,4 @@
-// create a class 'loadout' that houses 3 perks
-// create a new class that does not use parameters in the constructor
-// instead updates the objects via functions within the class
 
-// consider changing the method of getting a random weapon choice to make it more random.
-// currently there is an equally random chance of getting any weapon category
-// possibly add weighted probability based on number of weapons in category?
-// or make 1 single weapon array with all primary weapons and pull from there
-
-
-// function weightedRandom(prob) {
-//     let i, sum = 0, r = Math.random();
-//     for (i in prob) {
-//         sum += prob[i];
-//         if (r <= sum) return i;
-//     }
-// console.log('weightedRandom function: ', weightedRandom({arList: 0.26, smgList:0.24})
-
-{primaryWeaponsTotal: 118}
-{ar: 31} // 0.26
-{smg: 28} // 0.24
-{lmg: 16} // 0.14
-{marksman: 15} // 0.13
-{shotgun: 13} // 0.11
-{sniper: 13} // 0.11
-{melee: 2} // 0.01
-
-// function rndPrimWpGen() {
-//     // const rndPri_1 = getRandomInteger(0, allPrimaryWeapons.arList.length)
-//     // const rndPri_2 = getRandomInteger(0, allPrimaryWeapons.smgList.length)
-//     // const rndPri_3 = getRandomInteger(0, allPrimaryWeapons.lmgList.length)
-//     // const rndPri_4 = getRandomInteger(0, allPrimaryWeapons.marksmanList.length)
-//     // const rndPri_5 = getRandomInteger(0, allPrimaryWeapons.sniperList.length)
-//     // const rndPri_6 = getRandomInteger(0, allPrimaryWeapons.shotgunList.length)
-//     // const rndPri_7 = getRandomInteger(0, allPrimaryWeapons.meleeList.length)
-//     // const rndPriWpOptions_1 = allPrimaryWeapons.arList[rndPri_1]
-//     // const rndPriWpOptions_2 = allPrimaryWeapons.smgList[rndPri_2]
-//     // const rndPriWpOptions_3 = allPrimaryWeapons.lmgList[rndPri_3]
-//     // const rndPriWpOptions_4 = allPrimaryWeapons.marksmanList[rndPri_4]
-//     // const rndPriWpOptions_5 = allPrimaryWeapons.sniperList[rndPri_5]
-//     // const rndPriWpOptions_6 = allPrimaryWeapons.shotgunList[rndPri_6]
-//     // const rndPriWpOptions_7 = allPrimaryWeapons.meleeList[rndPri_7]
-//     // const rndPriOptionsList = [rndPriWpOptions_1, rndPriWpOptions_2, rndPriWpOptions_3, rndPriWpOptions_4, rndPriWpOptions_5, rndPriWpOptions_6, rndPriWpOptions_7]
-//     // weightedRndPrimary({ rndPriWpOptions_1: 0.26, rndPriWpOptions_2: 0.24, rndPriWpOptions_3: 0.14, rndPriWpOptions_4: 0.13, rndPriWpOptions_5: 0.11, rndPriWpOptions_6: 0.11, rndPriWpOptions_7: 0.01 })   
-//     const rndPriList = [rndPriWpOptions_1, rndPriWpOptions_2, rndPriWpOptions_3, rndPriWpOptions_4, rndPriWpOptions_5, rndPriWpOptions_6, rndPriWpOptions_7]
-//     const rndPriWpSelect = rndPriList[Math.floor(Math.random() * rndPriList.length)]
-//     return rndPriWpSelect
-// }
-
-// class Loadout {
-//     rndPriWeapon() {
-//         rndPrimWpGen();
-//         this.rndPriWpGen() = rndPrimWpGen() { }
-//     }
-//     rndSecWeapon
-//     rndPerkOne
-//     rndPerkTwo
-//     rndPerkThree
-// }
-// this.rndPriWeapon = rndPrimWpGen();
-// this.rndSecWeapon = rndSecWpGen();
-// this.rndPerkOne = rndPerkOneGen();
-// this.rndPerkTwo = rndPerkTwoGen();
-// this.rndPerkThree = rndPerkThreeGen;
-// }
-// const randomLoadout = new Loadout();
 
 // const arList = ['stg44 (vg)', 'cooper carbine (vg)', 'kilo 141 (mw)', 'grau 5.56 (mw)', 'ak-47 (cw)', 'm4a1 (mw)', 'm13 (mw)', 'xm4 (cw)',
 //     'bar (vg)', 'fara 83 (cw)', 'krig 6 (cw)', 'automaton (vg)', 'cr-56 amax (mw)', 'c58 (cw)', 'as44 (vg)', 'nz-41 (vg)', 'ffar 1 (cw)',
@@ -107,6 +42,10 @@ class Loadout {
         this.rndPerkOne = rndPerkOne;
         this.rndPerkTwo = rndPerkTwo;
         this.rndPerkThree = rndPerkThree;
+    }
+
+    rndPerkOneGen() {
+        this.rndPerkOne = perkOneList[Math.floor(Math.random() * perkOneList.length)]
     }
 }
 const allPrimaryWeaponsList = ['stg44 (vg)', 'cooper carbine (vg)', 'kilo 141 (mw)', 'grau 5.56 (mw)', 'ak-47 (cw)', 'm4a1 (mw)', 'm13 (mw)', 'xm4 (cw)',
@@ -158,3 +97,5 @@ function loadoutRandomizer() {
     return loadoutKit
 }
 console.log(loadoutRandomizer())
+
+// console.log(pistolList.concat(meleeSecList).concat(perkOneList))
