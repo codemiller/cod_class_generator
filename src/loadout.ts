@@ -30,6 +30,18 @@
 
 // const meleeSecList = ['fs fighting knife (vg)', 'combat knife (mw)', 'kali sticks (mw)', 'knife (cw)', 'ballistic knife (cw)']
 
+import { Command } from 'commander';
+const program = new Command();
+program
+    .option('--hello')
+    .option('-p, --pizza-type <type>')
+    .option('--weaponType <type>')
+    .option('--animalType <type>')
+
+program.parse(process.argv);
+const commandLineOptions = program.opts()
+console.log('options', commandLineOptions)
+
 class Loadout {
     rndPriWeapon
     rndSecWeapon
@@ -97,5 +109,4 @@ function loadoutRandomizer() {
     return loadoutKit
 }
 console.log(loadoutRandomizer())
-
 // console.log(pistolList.concat(meleeSecList).concat(perkOneList))

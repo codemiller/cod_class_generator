@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/ezmiller92/cod_class_generator#readme",
   "dependencies": {
+    "@types/node": "^17.0.8",
+    "commander": "^8.3.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   }
