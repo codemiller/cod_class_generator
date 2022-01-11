@@ -14,7 +14,7 @@
 //         sum += prob[i];
 //         if (r <= sum) return i;
 //     }
-// console.log('weightedRandom function: ', weightedRandom({arList: 0.26, smgList:0.24}))
+// console.log('weightedRandom function: ', weightedRandom({arList: 0.26, smgList:0.24})
 
 {primaryWeaponsTotal: 118}
 {ar: 31} // 0.26
@@ -109,8 +109,6 @@ class Loadout {
         this.rndPerkThree = rndPerkThree;
     }
 }
-
-
 const allPrimaryWeaponsList = ['stg44 (vg)', 'cooper carbine (vg)', 'kilo 141 (mw)', 'grau 5.56 (mw)', 'ak-47 (cw)', 'm4a1 (mw)', 'm13 (mw)', 'xm4 (cw)',
     'bar (vg)', 'fara 83 (cw)', 'krig 6 (cw)', 'automaton (vg)', 'cr-56 amax (mw)', 'c58 (cw)', 'as44 (vg)', 'nz-41 (vg)', 'ffar 1 (cw)',
     'ram-7 (mw)', 'em2 (cw)', 'volkssturmgewehr (vg)', 'ak-47 (mw)', 'as val (mw)', 'itra burst (vg)', 'an-94 (mw)', 'fal (mw)', 'qbz-83 (mw)',
