@@ -51,24 +51,35 @@ program
 
 program.parse(process.argv);
 const commandLineOptions = program.opts()
-console.log('options', commandLineOptions)
+// console.log('options', commandLineOptions)
 
 class Loadout {
-    rndPriWeapon
-    rndSecWeapon
+    rndPrimary
+    rndSecondary
     rndPerkOne
     rndPerkTwo
     rndPerkThree
     constructor(rndPriWeapon, rndSecWeapon, rndPerkOne, rndPerkTwo, rndPerkThree) {
-        this.rndPriWeapon = rndPriWeapon;
-        this.rndSecWeapon = rndSecWeapon;
+        this.rndPrimary = rndPriWeapon;
+        this.rndSecondary = rndSecWeapon;
         this.rndPerkOne = rndPerkOne;
         this.rndPerkTwo = rndPerkTwo;
         this.rndPerkThree = rndPerkThree;
     }
-
+    rndPrimWpGen() {
+        this.rndPrimary = allPrimaryWeaponsList[Math.floor(Math.random() * allPrimaryWeaponsList.length)]
+    }
+    rndSecWpGen() {
+        this.rndSecondary = allSecondaryWeaponsList[Math.floor(Math.random() * allSecondaryWeaponsList.length)]
+    }
     rndPerkOneGen() {
         this.rndPerkOne = perkOneList[Math.floor(Math.random() * perkOneList.length)]
+    }
+    rndPerkTwoGen() {
+        this.rndPerkTwo = perkTwoList[Math.floor(Math.random() * perkTwoList.length)]
+    }
+    rndPerkThreeGen() {
+        this.rndPerkThree = perkThreeList[Math.floor(Math.random() * perkThreeList.length)]
     }
 }
 function rndPrimWpGen() {
@@ -87,12 +98,12 @@ function rndPerkThreeGen() {
     return perkThreeList[Math.floor(Math.random() * perkThreeList.length)]
 }
 function loadoutRandomizer() {
-    const rndPriWeapon = rndPrimWpGen()
-    const rndSecWeapon = rndSecWpGen()
+    const rndPrimary = rndPrimWpGen()
+    const rndSecondary = rndSecWpGen()
     const rndPerkOne = rndPerkOneGen()
     const rndPerkTwo = rndPerkTwoGen()
     const rndPerkThree = rndPerkThreeGen()
-    const loadoutKit = new Loadout(rndPriWeapon, rndSecWeapon, rndPerkOne, rndPerkTwo, rndPerkThree)
+    const loadoutKit = new Loadout(rndPrimary, rndSecondary, rndPerkOne, rndPerkTwo, rndPerkThree)
     return loadoutKit
 }
 console.log(loadoutRandomizer())
