@@ -50,60 +50,73 @@ const allSecondaryWeaponsList = pistolList.concat(launcherList).concat(meleeSecL
 //   rndPerkOne: 'e.o.d.',
 //   rndPerkTwo: 'high alert',
 //   rndPerkThree: 'spotter'
+
+const program = new Command();
+program
+    .option('--perkType <type>', 'input a specific perk type for your loadout')
+    .option('--weaponType <type>', 'input a specific weapon type for your loadout')
+    .helpOption('--commands', `
+            --weaponType assaultRifle
+            --weaponType smg
+            --weaponType lmg
+            --weaponType marksman
+            --weaponType sniper
+            --weaponType shotgun
+            --weaponType meleePrimary
+            --weaponType launcher
+            --weaponType pistol
+            --weaponType meleeSecondary
+            --perkType perkOne
+            --perkType perkTwo
+            --perkType perkThree
+            `)
+
+const commandLineOptions = program.opts()
+program.parse(process.argv);
+console.log('options', commandLineOptions)
 class Loadout {
     rndPrimary
     rndSecondary
     rndPerkOne
     rndPerkTwo
     rndPerkThree
-    constructor(rndPriWeapon, rndSecWeapon, rndPerkOne, rndPerkTwo, rndPerkThree) {
-        this.rndPrimary = rndPriWeapon;
-        this.rndSecondary = rndSecWeapon;
-        this.rndPerkOne = rndPerkOne;
-        this.rndPerkTwo = rndPerkTwo;
-        this.rndPerkThree = rndPerkThree;
+    constructor() {
+
+        if (commandLineOptions.weaponType === 'assaultRifle') {
+            this.rndPrimary = this.rndARGen()
+        } else {
+            this.rndPrimary = this.rndPrimWpGen()
+        }
+
+        this.rndSecondary = this.rndSecWpGen();
+        this.rndPerkOne = this.rndPerkOneGen();
+        this.rndPerkTwo = this.rndPerkTwoGen();
+        this.rndPerkThree = this.rndPerkThreeGen();
+    }
+    rndARGen() {
+        return arList[Math.floor(Math.random() * arList.length)]
     }
     rndPrimWpGen() {
-        this.rndPrimary = allPrimaryWeaponsList[Math.floor(Math.random() * allPrimaryWeaponsList.length)]
+        return allPrimaryWeaponsList[Math.floor(Math.random() * allPrimaryWeaponsList.length)]
     }
     rndSecWpGen() {
-        this.rndSecondary = allSecondaryWeaponsList[Math.floor(Math.random() * allSecondaryWeaponsList.length)]
+        return allSecondaryWeaponsList[Math.floor(Math.random() * allSecondaryWeaponsList.length)]
     }
     rndPerkOneGen() {
-        this.rndPerkOne = perkOneList[Math.floor(Math.random() * perkOneList.length)]
+        return perkOneList[Math.floor(Math.random() * perkOneList.length)]
     }
     rndPerkTwoGen() {
-        this.rndPerkTwo = perkTwoList[Math.floor(Math.random() * perkTwoList.length)]
+        return perkTwoList[Math.floor(Math.random() * perkTwoList.length)]
     }
     rndPerkThreeGen() {
-        this.rndPerkThree = perkThreeList[Math.floor(Math.random() * perkThreeList.length)]
+        return perkThreeList[Math.floor(Math.random() * perkThreeList.length)]
     }
 }
-function rndPrimWpGen() {
-    return allPrimaryWeaponsList[Math.floor(Math.random() * allPrimaryWeaponsList.length)]
-}
-function rndSecWpGen() {
-    return allSecondaryWeaponsList[Math.floor(Math.random() * allSecondaryWeaponsList.length)]
-}
-function rndPerkOneGen() {
-    return perkOneList[Math.floor(Math.random() * perkOneList.length)]
-}
-function rndPerkTwoGen() {
-    return perkTwoList[Math.floor(Math.random() * perkTwoList.length)]
-}
-function rndPerkThreeGen() {
-    return perkThreeList[Math.floor(Math.random() * perkThreeList.length)]
-}
 function loadoutRandomizer() {
-    const rndPrimary = rndPrimWpGen()
-    const rndSecondary = rndSecWpGen()
-    const rndPerkOne = rndPerkOneGen()
-    const rndPerkTwo = rndPerkTwoGen()
-    const rndPerkThree = rndPerkThreeGen()
-    return new Loadout(rndPrimary, rndSecondary, rndPerkOne, rndPerkTwo, rndPerkThree)
-
+    return new Loadout()
 }
-loadoutRandomizer()
+const theLoadout = loadoutRandomizer()
+console.log('loadout: ', theLoadout)
 
 function rndAR() {
     return arList[Math.floor(Math.random() * arList.length)]
@@ -136,71 +149,16 @@ function meleeSecondary() {
     return meleeSecList[Math.floor(Math.random() * meleeSecList.length)]
 }
 
-const program = new Command();
-program
-    .option('--perkType <type>', 'input a specific perk type for your loadout')
-    .option('--weaponType <type>', 'input a specific weapon type for your loadout')
-    .helpOption('--commands', ` 
-            --weaponType assaultRifle
-            --weaponType smg 
-            --weaponType lmg 
-            --weaponType marksman 
-            --weaponType sniper 
-            --weaponType shotgun 
-            --weaponType meleePrimary 
-            --weaponType launcher 
-            --weaponType pistol 
-            --weaponType meleeSecondary
-            --perkType perkOne
-            --perkType perkTwo
-            --perkType perkThree
-            `)
-
-const commandLineOptions = program.opts()
-program.parse(process.argv);
-console.log('options', commandLineOptions)
 
 
-// let arLoadout = class {
-//     ar
-//     rndSecondary
-//     rndPerkOne
-//     rndPerkTwo
-//     rndPerkThree
-// } contructor(ar, rndSecWeapon, rndPerkOne, rndPerkTwo, rndPerkThree) {
-//     this.ar = ar;
-//     this.rndSecWeapon;
-//     this.rndPerkOne;
-//     this.rndPerkTwo;
-//     this.rndPerkThree;
-// }
-// rndAR() {
-//     this.ar = arList[Math.floor(Math.random() * arList.length)]
-// }
-// rndSecWpGen() {
-//     this.rndSecondary = allSecondaryWeaponsList[Math.floor(Math.random() * allSecondaryWeaponsList.length)]
-// }
-// rndPerkOneGen() {
-//     this.rndPerkOne = perkOneList[Math.floor(Math.random() * perkOneList.length)]
-// }
-// rndPerkTwoGen() {
-//     this.rndPerkTwo = perkTwoList[Math.floor(Math.random() * perkTwoList.length)]
-// }
-// rndPerkThreeGen() {
-//     this.rndPerkThree = perkThreeList[Math.floor(Math.random() * perkThreeList.length)]
-// }
-// rndLoadoutGen() {
-//     if (commandLineOptions.weaponType === 'assaultRifle') {
-//         return new arLoadout(ar, rndSecWeapon, rndPerkOne, rndPerkTwo, rndPerkThree)
-//     } else { console.log(loadoutRandomizer()) }
-// }
+
+
+
+
+
 
 if (commandLineOptions.weaponType === 'assaultRifle') {
-    console.log('rndAssaultRifle: ', rndAR(),
-        'rndSecondary: ', rndSecWpGen(),
-        'rndPerkOne: ', rndPerkOneGen(),
-        'rndPerkTwo: ', rndPerkTwoGen(),
-        'rndPerkThree: ', rndPerkThreeGen())    
+    new Loadout()
 } else { console.log('--commands for list of commands') }
 
 
