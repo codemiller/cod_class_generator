@@ -1,4 +1,5 @@
 import { Command } from 'commander';
+import { ConstructorDeclaration, isConstructorTypeNode } from 'typescript';
 // individual lists of all primary and secondary weapons
 const arList = ['stg44 (vg)', 'cooper carbine (vg)', 'kilo 141 (mw)', 'grau 5.56 (mw)', 'ak-47 (cw)', 'm4a1 (mw)', 'm13 (mw)', 'xm4 (cw)',
     'bar (vg)', 'fara 83 (cw)', 'krig 6 (cw)', 'automaton (vg)', 'cr-56 amax (mw)', 'c58 (cw)', 'as44 (vg)', 'nz-41 (vg)', 'ffar 1 (cw)',
@@ -41,18 +42,14 @@ const allPrimaryWeaponsList = arList.concat(smgList).concat(lmgList).concat(mark
 
 const allSecondaryWeaponsList = pistolList.concat(launcherList).concat(meleeSecList)
 
-
-const program = new Command();
-program
-    .option('--hello')
-    .option('-p, --pizza-type <type>')
-    .option('--weaponType <type>')
-    .option('--animalType <type>')
-
-program.parse(process.argv);
-const commandLineOptions = program.opts()
-// console.log('options', commandLineOptions)
-
+// create a command list for weapon types/perks that return a random selection from that input 
+// along with a full random loadout for all other categories
+// i.e. (npx ts-node .\src\loadout.ts --weaponType assaultRifle) will output an assault rifle in the rndPrimary property:
+//   rndPrimary: 'nz-41 (vg)', [assaultRifle selected due to command]
+//   rndSecondary: 'panzerfaust (vg)',
+//   rndPerkOne: 'e.o.d.',
+//   rndPerkTwo: 'high alert',
+//   rndPerkThree: 'spotter'
 class Loadout {
     rndPrimary
     rndSecondary
@@ -103,7 +100,108 @@ function loadoutRandomizer() {
     const rndPerkOne = rndPerkOneGen()
     const rndPerkTwo = rndPerkTwoGen()
     const rndPerkThree = rndPerkThreeGen()
-    const loadoutKit = new Loadout(rndPrimary, rndSecondary, rndPerkOne, rndPerkTwo, rndPerkThree)
-    return loadoutKit
+    return new Loadout(rndPrimary, rndSecondary, rndPerkOne, rndPerkTwo, rndPerkThree)
+
 }
-console.log(loadoutRandomizer())
+loadoutRandomizer()
+
+function rndAR() {
+    return arList[Math.floor(Math.random() * arList.length)]
+}
+function rndSMG() {
+    return smgList[Math.floor(Math.random() * smgList.length)]
+}
+function rndLMG() {
+    return lmgList[Math.floor(Math.random() * lmgList.length)]
+}
+function rndMarksman() {
+    return marksmanList[Math.floor(Math.random() * marksmanList.length)]
+}
+function rndSniper() {
+    return sniperList[Math.floor(Math.random() * sniperList.length)]
+}
+function rndShotgun() {
+    return shotgunList[Math.floor(Math.random() * shotgunList.length)]
+}
+function rndMeleePrimary() {
+    return meleePriList[Math.floor(Math.random() * meleePriList.length)]
+}
+function rndLauncher() {
+    return launcherList[Math.floor(Math.random() * launcherList.length)]
+}
+function rndPistol() {
+    return pistolList[Math.floor(Math.random() * pistolList.length)]
+}
+function meleeSecondary() {
+    return meleeSecList[Math.floor(Math.random() * meleeSecList.length)]
+}
+
+const program = new Command();
+program
+    .option('--perkType <type>', 'input a specific perk type for your loadout')
+    .option('--weaponType <type>', 'input a specific weapon type for your loadout')
+    .helpOption('--commands', ` 
+            --weaponType assaultRifle
+            --weaponType smg 
+            --weaponType lmg 
+            --weaponType marksman 
+            --weaponType sniper 
+            --weaponType shotgun 
+            --weaponType meleePrimary 
+            --weaponType launcher 
+            --weaponType pistol 
+            --weaponType meleeSecondary
+            --perkType perkOne
+            --perkType perkTwo
+            --perkType perkThree
+            `)
+
+const commandLineOptions = program.opts()
+program.parse(process.argv);
+console.log('options', commandLineOptions)
+
+
+// let arLoadout = class {
+//     ar
+//     rndSecondary
+//     rndPerkOne
+//     rndPerkTwo
+//     rndPerkThree
+// } contructor(ar, rndSecWeapon, rndPerkOne, rndPerkTwo, rndPerkThree) {
+//     this.ar = ar;
+//     this.rndSecWeapon;
+//     this.rndPerkOne;
+//     this.rndPerkTwo;
+//     this.rndPerkThree;
+// }
+// rndAR() {
+//     this.ar = arList[Math.floor(Math.random() * arList.length)]
+// }
+// rndSecWpGen() {
+//     this.rndSecondary = allSecondaryWeaponsList[Math.floor(Math.random() * allSecondaryWeaponsList.length)]
+// }
+// rndPerkOneGen() {
+//     this.rndPerkOne = perkOneList[Math.floor(Math.random() * perkOneList.length)]
+// }
+// rndPerkTwoGen() {
+//     this.rndPerkTwo = perkTwoList[Math.floor(Math.random() * perkTwoList.length)]
+// }
+// rndPerkThreeGen() {
+//     this.rndPerkThree = perkThreeList[Math.floor(Math.random() * perkThreeList.length)]
+// }
+// rndLoadoutGen() {
+//     if (commandLineOptions.weaponType === 'assaultRifle') {
+//         return new arLoadout(ar, rndSecWeapon, rndPerkOne, rndPerkTwo, rndPerkThree)
+//     } else { console.log(loadoutRandomizer()) }
+// }
+
+if (commandLineOptions.weaponType === 'assaultRifle') {
+    console.log('rndAssaultRifle: ', rndAR(),
+        'rndSecondary: ', rndSecWpGen(),
+        'rndPerkOne: ', rndPerkOneGen(),
+        'rndPerkTwo: ', rndPerkTwoGen(),
+        'rndPerkThree: ', rndPerkThreeGen())    
+} else { console.log('--commands for list of commands') }
+
+
+
