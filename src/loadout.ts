@@ -42,38 +42,38 @@ const allPrimaryWeaponsList = arList.concat(smgList).concat(lmgList).concat(mark
 
 const allSecondaryWeaponsList = pistolList.concat(launcherList).concat(meleeSecList)
 
-// create a command list for weapon types/perks that return a random selection from that input 
-// along with a full random loadout for all other categories
-// i.e. (npx ts-node .\src\loadout.ts --weaponType assaultRifle) will output an assault rifle in the rndPrimary property:
-//   rndPrimary: 'nz-41 (vg)', [assaultRifle selected due to command]
-//   rndSecondary: 'panzerfaust (vg)',
-//   rndPerkOne: 'e.o.d.',
-//   rndPerkTwo: 'high alert',
-//   rndPerkThree: 'spotter'
-
 const program = new Command();
+
+function errorColorRed(str) {
+    return `\x1b[31m${str}\x1b[0m`
+}
 program
-    .option('--perkType <type>', 'input a specific perk type for your loadout')
-    .option('--weaponType <type>', 'input a specific weapon type for your loadout')
-    .helpOption('--commands', `
-            --weaponType assaultRifle
-            --weaponType smg
-            --weaponType lmg
-            --weaponType marksman
-            --weaponType sniper
-            --weaponType shotgun
-            --weaponType meleePrimary
-            --weaponType launcher
-            --weaponType pistol
-            --weaponType meleeSecondary
-            --perkType perkOne
-            --perkType perkTwo
-            --perkType perkThree
+    .option('--priType <type>', 'input a specific primary weapon type for your loadout')
+    .option('--secType <type>', 'input a specific secondary weapon type for your loadout')
+    .addHelpText('after', `Command List:
+
+            --priType assaultRifle
+            --priype smg
+            --priType lmg
+            --priType marksman
+            --priType sniper
+            --priType shotgun
+            --priType melee
+
+            --secType launcher
+            --secType pistol
+            --secType melee
             `)
+    .configureOutput({
+        writeOut: (str) => process.stdout.write(`[OUT] ${str}`),
+        writeErr: (str) => process.stdout.write(`[ERR] ${str} --help for a list of all options`),
+        outputError: (str, write) => write(errorColorRed(str))
+    })
+
+program.parse(process.argv);
 
 const commandLineOptions = program.opts()
-program.parse(process.argv);
-console.log('options', commandLineOptions)
+console.log('\x1b[36m%s\x1b[0m ', 'Selection', commandLineOptions)
 class Loadout {
     rndPrimary
     rndSecondary
@@ -81,20 +81,78 @@ class Loadout {
     rndPerkTwo
     rndPerkThree
     constructor() {
-
-        if (commandLineOptions.weaponType === 'assaultRifle') {
-            this.rndPrimary = this.rndARGen()
-        } else {
-            this.rndPrimary = this.rndPrimWpGen()
+        switch (commandLineOptions.priType) {
+            case 'assaultRifle':
+                this.rndPrimary = this.rndARGen()
+                break
+            case 'smg':
+                this.rndPrimary = this.rndSMGGen()
+                break
+            case 'lmg':
+                this.rndPrimary = this.rndLMGGen()
+                break
+            case 'marksman':
+                this.rndPrimary = this.rndMarksmanGen()
+                break
+            case 'sniper':
+                this.rndPrimary = this.rndSniperGen()
+                break
+            case 'shotgun':
+                this.rndPrimary = this.rndShotgunGen()
+                break
+            case 'melee':
+                this.rndPrimary = this.rndMeleePrimaryGen()
+                break
+            default:
+                this.rndPrimary = this.rndPrimWpGen()
+                break
         }
-
-        this.rndSecondary = this.rndSecWpGen();
+        switch (commandLineOptions.secType) {
+            case 'launcher':
+                this.rndSecondary = this.rndLauncherGen()
+                break
+            case 'pistol':
+                this.rndSecondary = this.rndPistolGen()
+                break
+            case 'melee':
+                this.rndSecondary = this.rndSecWpGen()
+            default:
+                this.rndSecondary = this.rndSecWpGen()
+        }
         this.rndPerkOne = this.rndPerkOneGen();
         this.rndPerkTwo = this.rndPerkTwoGen();
         this.rndPerkThree = this.rndPerkThreeGen();
+
     }
     rndARGen() {
         return arList[Math.floor(Math.random() * arList.length)]
+    }
+    rndSMGGen() {
+        return smgList[Math.floor(Math.random() * smgList.length)]
+    }
+    rndLMGGen() {
+        return lmgList[Math.floor(Math.random() * lmgList.length)]
+    }
+    rndMarksmanGen() {
+        return marksmanList[Math.floor(Math.random() * marksmanList.length)]
+    }
+    rndSniperGen() {
+        return sniperList[Math.floor(Math.random() * sniperList.length)]
+    }
+    rndShotgunGen() {
+        return shotgunList[Math.floor(Math.random() * shotgunList.length)]
+    }
+    rndMeleePrimaryGen() {
+        return meleePriList[Math.floor(Math.random() * meleePriList.length)]
+    }
+    rndLauncherGen() {
+        return launcherList[Math.floor(Math.random() * launcherList.length)]
+    }
+    rndPistolGen() {
+        return pistolList[Math.floor(Math.random() * pistolList.length)]
+    }
+    meleeSecondaryGen() {
+        return meleeSecList[Math.floor(Math.random() * meleeSecList.length)]
     }
     rndPrimWpGen() {
         return allPrimaryWeaponsList[Math.floor(Math.random() * allPrimaryWeaponsList.length)]
@@ -115,51 +173,5 @@ class Loadout {
 function loadoutRandomizer() {
     return new Loadout()
 }
-const theLoadout = loadoutRandomizer()
-console.log('loadout: ', theLoadout)
-
-function rndAR() {
-    return arList[Math.floor(Math.random() * arList.length)]
-}
-function rndSMG() {
-    return smgList[Math.floor(Math.random() * smgList.length)]
-}
-function rndLMG() {
-    return lmgList[Math.floor(Math.random() * lmgList.length)]
-}
-function rndMarksman() {
-    return marksmanList[Math.floor(Math.random() * marksmanList.length)]
-}
-function rndSniper() {
-    return sniperList[Math.floor(Math.random() * sniperList.length)]
-}
-function rndShotgun() {
-    return shotgunList[Math.floor(Math.random() * shotgunList.length)]
-}
-function rndMeleePrimary() {
-    return meleePriList[Math.floor(Math.random() * meleePriList.length)]
-}
-function rndLauncher() {
-    return launcherList[Math.floor(Math.random() * launcherList.length)]
-}
-function rndPistol() {
-    return pistolList[Math.floor(Math.random() * pistolList.length)]
-}
-function meleeSecondary() {
-    return meleeSecList[Math.floor(Math.random() * meleeSecList.length)]
-}
-
-
-
-
-
-
-
-
-
-if (commandLineOptions.weaponType === 'assaultRifle') {
-    new Loadout()
-} else { console.log('--commands for list of commands') }
-
-
+console.log(loadoutRandomizer())
 
