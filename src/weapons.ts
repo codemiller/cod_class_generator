@@ -32,3 +32,13 @@ export const meleeSecList = ['fs fighting knife (vg)', 'combat knife (mw)', 'kal
 export const allPrimaryWeaponsList = arList.concat(smgList).concat(lmgList).concat(marksmanList).concat(sniperList).concat(shotgunList).concat(meleePriList)
 
 export const allSecondaryWeaponsList = pistolList.concat(launcherList).concat(meleeSecList)
+
+
+export class Gun {
+    attachment1: string
+    attachment2: string
+    attachment3: string
+    attachment4: string
+    attachment5: string
+    weapon: string
+}
