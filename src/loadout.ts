@@ -1,12 +1,12 @@
 import { Command } from 'commander';
 import { ConstructorDeclaration, isConstructorTypeNode } from 'typescript';
 import { perkOneList, perkTwoList, perkThreeList } from './perks';
-import { allPrimaryWeaponsList, allSecondaryWeaponsList, arList, Gun, launcherList, lmgList, marksmanList, meleePriList, meleeSecList, pistolList, shotgunList, smgList, sniperList } from './weapons';
+import { allPrimaryWeaponsList, allSecondaryWeaponsList, arList, launcherList, lmgList, marksmanList, meleePriList, meleeSecList, pistolList, shotgunList, smgList, sniperList } from './weapons';
 // individual lists of all primary and secondary weapons
-
+import { Gun } from './weapons';
 export class Loadout {
-    rndPrimary
-    rndSecondary
+    rndPrimary: Gun
+    rndSecondary: Gun
     rndPerkOne: string
     rndPerkTwo: string
     rndPerkThree: string

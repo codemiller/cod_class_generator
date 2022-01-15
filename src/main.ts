@@ -1,5 +1,6 @@
 import { Command } from "commander";
 import { Loadout } from "./loadout";
+import { Gun } from "./weapons";
 
 const program = new Command();
 
@@ -32,6 +33,8 @@ program
 program.parse(process.argv);
 
 const commandLineOptions = program.opts()
-console.log('\x1b[36m%s\x1b[0m ', 'Selection', commandLineOptions)
-console.log(commandLineOptions)
-console.log(new Loadout(commandLineOptions))
+// console.log('\x1b[36m%s\x1b[0m ', 'Selection', commandLineOptions)
+// console.log(commandLineOptions)
+// console.log(new Loadout(commandLineOptions))
+
+console.log(new Gun())

@@ -1,3 +1,8 @@
+import { parseCommandLine } from "typescript"
+import { barrel, magazine, muzzle, optic, underbarrel } from "./attachments"
+import {Loadout} from "./loadout"
+
+
 export const arList = ['stg44 (vg)', 'cooper carbine (vg)', 'kilo 141 (mw)', 'grau 5.56 (mw)', 'ak-47 (cw)', 'm4a1 (mw)', 'm13 (mw)', 'xm4 (cw)',
     'bar (vg)', 'fara 83 (cw)', 'krig 6 (cw)', 'automaton (vg)', 'cr-56 amax (mw)', 'c58 (cw)', 'as44 (vg)', 'nz-41 (vg)', 'ffar 1 (cw)',
     'ram-7 (mw)', 'em2 (cw)', 'volkssturmgewehr (vg)', 'ak-47 (mw)', 'as val (mw)', 'itra burst (vg)', 'an-94 (mw)', 'fal (mw)', 'qbz-83 (mw)',
@@ -35,10 +40,68 @@ export const allSecondaryWeaponsList = pistolList.concat(launcherList).concat(me
 
 
 export class Gun {
+    weaponName: string
     attachment1: string
     attachment2: string
     attachment3: string
     attachment4: string
     attachment5: string
-    weapon: string
+    constructor() {
+        this.attachment1 = this.rndAttachment1()
+        this.attachment2 = this.rndAttachment2()
+        this.attachment3 = this.rndAttachment3()
+        this.attachment4 = this.rndAttachment4()
+        this.attachment5 = this.rndAttachment5()
+    }
+    rndAttachment1() {
+        return barrel[Math.floor(Math.random() * barrel.length)]
+    }
+    rndAttachment2() {
+        return muzzle[Math.floor(Math.random() * muzzle.length)]
+    }
+    rndAttachment3() {
+        return underbarrel[Math.floor(Math.random() * underbarrel.length)]
+    }
+    rndAttachment4() {
+        return magazine[Math.floor(Math.random() * magazine.length)]
+    }
+    rndAttachment5() {
+        return optic[Math.floor(Math.random() * optic.length)]
+    }
+    rndARGen() {
+        return arList[Math.floor(Math.random() * arList.length)]
+    }
+    rndSMGGen() {
+        return smgList[Math.floor(Math.random() * smgList.length)]
+    }
+    rndLMGGen() {
+        return lmgList[Math.floor(Math.random() * lmgList.length)]
+    }
+    rndMarksmanGen() {
+        return marksmanList[Math.floor(Math.random() * marksmanList.length)]
+    }
+    rndSniperGen() {
+        return sniperList[Math.floor(Math.random() * sniperList.length)]
+    }
+    rndShotgunGen() {
+        return shotgunList[Math.floor(Math.random() * shotgunList.length)]
+    }
+    rndMeleePrimaryGen() {
+        return meleePriList[Math.floor(Math.random() * meleePriList.length)]
+    }
+    rndLauncherGen() {
+        return launcherList[Math.floor(Math.random() * launcherList.length)]
+    }
+    rndPistolGen() {
+        return pistolList[Math.floor(Math.random() * pistolList.length)]
+    }
+    rndMeleeSecondaryGen() {
+        return meleeSecList[Math.floor(Math.random() * meleeSecList.length)]
+    }
+    rndPrimWpGen() {
+        return allPrimaryWeaponsList[Math.floor(Math.random() * allPrimaryWeaponsList.length)]
+    }
+    rndSecWpGen() {
+        return allSecondaryWeaponsList[Math.floor(Math.random() * allSecondaryWeaponsList.length)]
+    }
 }
