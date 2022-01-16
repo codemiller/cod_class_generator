@@ -1,6 +1,6 @@
 import { parseCommandLine } from "typescript"
 import { barrel, magazine, muzzle, optic, underbarrel } from "./attachments"
-import {Loadout} from "./loadout"
+import { Loadout } from "./loadout"
 
 
 export const arList = ['stg44 (vg)', 'cooper carbine (vg)', 'kilo 141 (mw)', 'grau 5.56 (mw)', 'ak-47 (cw)', 'm4a1 (mw)', 'm13 (mw)', 'xm4 (cw)',
@@ -39,14 +39,40 @@ export const allPrimaryWeaponsList = arList.concat(smgList).concat(lmgList).conc
 export const allSecondaryWeaponsList = pistolList.concat(launcherList).concat(meleeSecList)
 
 
-export class Gun {
-    weaponName: string
+export class rndPrimaryGun {
+    weapon: string
     attachment1: string
     attachment2: string
     attachment3: string
     attachment4: string
     attachment5: string
-    constructor() {
+    constructor(input1) {
+        switch (input1.priType) {
+            case 'assaultRifle':
+                this.weapon = this.rndARGen()
+                break
+            case 'smg':
+                this.weapon = this.rndSMGGen()
+                break
+            case 'lmg':
+                this.weapon = this.rndLMGGen()
+                break
+            case 'marksman':
+                this.weapon = this.rndMarksmanGen()
+                break
+            case 'sniper':
+                this.weapon = this.rndSniperGen()
+                break
+            case 'shotgun':
+                this.weapon = this.rndShotgunGen()
+                break
+            case 'melee':
+                this.weapon = this.rndMeleePrimaryGen()
+                break
+            default:
+                this.weapon = this.rndPrimWpGen()
+                break
+        }
         this.attachment1 = this.rndAttachment1()
         this.attachment2 = this.rndAttachment2()
         this.attachment3 = this.rndAttachment3()
@@ -89,6 +115,54 @@ export class Gun {
     rndMeleePrimaryGen() {
         return meleePriList[Math.floor(Math.random() * meleePriList.length)]
     }
+    rndPrimWpGen() {
+        return allPrimaryWeaponsList[Math.floor(Math.random() * allPrimaryWeaponsList.length)]
+    }
+}
+
+export class rndSecondaryGun {
+    weapon: string
+    attachment1: string
+    attachment2: string
+    attachment3: string
+    attachment4: string
+    attachment5: string
+    constructor(input) {
+        switch (input.secType) {
+            case 'launcher':
+                this.weapon = this.rndLauncherGen()
+                break
+            case 'pistol':
+                this.weapon = this.rndPistolGen()
+                break
+            case 'melee':
+                this.weapon = this.rndMeleeSecondaryGen()
+                break
+            default:
+                this.weapon = this.rndSecWpGen()
+                break
+        }
+        this.attachment1 = this.rndAttachment1()
+        this.attachment2 = this.rndAttachment2()
+        this.attachment3 = this.rndAttachment3()
+        this.attachment4 = this.rndAttachment4()
+        this.attachment5 = this.rndAttachment5()
+    }
+    rndAttachment1() {
+        return barrel[Math.floor(Math.random() * barrel.length)]
+    }
+    rndAttachment2() {
+        return muzzle[Math.floor(Math.random() * muzzle.length)]
+    }
+    rndAttachment3() {
+        return underbarrel[Math.floor(Math.random() * underbarrel.length)]
+    }
+    rndAttachment4() {
+        return magazine[Math.floor(Math.random() * magazine.length)]
+    }
+    rndAttachment5() {
+        return optic[Math.floor(Math.random() * optic.length)]
+    }
     rndLauncherGen() {
         return launcherList[Math.floor(Math.random() * launcherList.length)]
     }
@@ -97,9 +171,6 @@ export class Gun {
     }
     rndMeleeSecondaryGen() {
         return meleeSecList[Math.floor(Math.random() * meleeSecList.length)]
-    }
-    rndPrimWpGen() {
-        return allPrimaryWeaponsList[Math.floor(Math.random() * allPrimaryWeaponsList.length)]
     }
     rndSecWpGen() {
         return allSecondaryWeaponsList[Math.floor(Math.random() * allSecondaryWeaponsList.length)]
