@@ -14,6 +14,11 @@ export const stock = ['stock_slot_1', 'stock_slot_2', 'stock_slot_3', 'stock_slo
 
 export const allAttachmentsList = muzzle.concat(barrel).concat(underbarrel).concat(magazine).concat(optic).concat(rearGrip).concat(stock)
 
+//
+// - Choose a random category for each attachment
+// - Once a category is selected it cannot be selected again
+// - After all attachments have a category then select a random attachment from that category.
+
 
 export class rndAttachments {
     attachment_1
@@ -29,7 +34,7 @@ export class rndAttachments {
         // this.attachment_5 = this.rndAllAttachments()
 
         switch (true) {
-            case this.attachment_1 == stock.values:
+            case this.attachment_1 = stock.values:
                 this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
                 break
             case this.attachment_1 == rearGrip.values:
