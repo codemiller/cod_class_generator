@@ -22,124 +22,130 @@ export class rndAttachments {
     attachment_4
     attachment_5
     constructor() {
-        this.attachment_1 = this.rndAllAttachments()
-        this.attachment_2 = this.rndAllAttachments()
-        this.attachment_3 = this.rndAllAttachments()
-        this.attachment_4 = this.rndAllAttachments()
-        this.attachment_5 = this.rndAllAttachments()
+        // this.attachment_1 = this.rndAllAttachments()
+        // this.attachment_2 = this.rndAllAttachments()
+        // this.attachment_3 = this.rndAllAttachments()
+        // this.attachment_4 = this.rndAllAttachments()
+        // this.attachment_5 = this.rndAllAttachments()
 
-        // switch (.indexOf() != -1)) {
-        //     case this.attachment_1 == this.attachment_2:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_1 == this.attachment_3:
-        //         break
-        //     case this.attachment_1 == this.attachment_4:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_1 == this.attachment_5:
-        //         this.rndAllAttachments()
-        //         break
-        //     default:
-        //         this.attachment_1 = this.rndAllAttachments()
-        //         break
-        // }
-        // switch (this.attachment_2) {
-        //     case this.attachment_2 == this.attachment_1:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_2 == this.attachment_3:
-        //         break
-        //     case this.attachment_2 == this.attachment_4:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_2 == this.attachment_5:
-        //         this.rndAllAttachments()
-        //         break
-        //     default:
-        //         this.attachment_2 = this.rndAllAttachments()
-        //         break
-        // }
-        // switch (this.attachment_3) {
-        //     case this.attachment_3 == this.attachment_2:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_3 == this.attachment_1:
-        //         break
-        //     case this.attachment_3 == this.attachment_4:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_3 == this.attachment_5:
-        //         this.rndAllAttachments()
-        //         break
-        //     default:
-        //         this.attachment_3 = this.rndAllAttachments()
-        //         break
-        // }
-        // switch (this.attachment_4) {
-        //     case this.attachment_4 == this.attachment_2:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_4 == this.attachment_3:
-        //         break
-        //     case this.attachment_4 == this.attachment_1:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_4 == this.attachment_5:
-        //         this.rndAllAttachments()
-        //         break
-        //     default:
-        //         this.attachment_4 = this.rndAllAttachments()
-        //         break
-        // }
-        // switch (this.attachment_5) {
-        //     case this.attachment_5 == this.attachment_2:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_5 == this.attachment_3:
-        //         break
-        //     case this.attachment_5 == this.attachment_4:
-        //         this.rndAllAttachments()
-        //         break
-        //     case this.attachment_5 == this.attachment_1:
-        //         this.rndAllAttachments()
-        //         break
-        //     default:
-        //         this.attachment_5 = this.rndAllAttachments()
-        //         break
-        // }
-        // //   while(this.attachment_1 !== this.attachment_2 && this.attachment_3 && this.attachment_4 && this.attachment_5) {
-        // // this.attachment_1 = this.rndAllAttachments()
-
-        // // // while (this.attachment_2 !== this.attachment_1 && this.attachment_2 && this.attachment_3 && this.attachment_4 && this.attachment_5) {
-        // // this.attachment_2 = this.rndAllAttachments()
-        // // // }
-        // // // while (this.attachment_3 !== this.attachment_1 && this.attachment_2 && this.attachment_4 && this.attachment_5) {
-        // // this.attachment_3 = this.rndAllAttachments()
-        // // // }
-        // // // while (this.attachment_4 !== this.attachment_1 && this.attachment_2 && this.attachment_3 && this.attachment_5) {
-        // // this.attachment_4 = this.rndAllAttachments()
-        // // // }
-        // // // while (this.attachment_5 !== this.attachment_1 && this.attachment_2 && this.attachment_3 && this.attachment_4) {
-        // // this.attachment_5 = this.rndAllAttachments()
-        // // }
-        // //     case 'shotgun':
-        // //         this.weapon = this.rndShotgunGen()
-        // //         break
-        // //     case 'melee':
-        // //         this.weapon = this.rndMeleePrimaryGen()
-        // //         break
-        // //     default:
-        // //         this.weapon = this.rndPrimWpGen()
-        // //         break
-        // // }
-        // // this.attachment_1 = this.rndBarrel()
-        // // this.attachment_2 = this.compareKeys(this.attachment_2)
-        // // this.attachment_3 = this.compareKeys(this.attachment_3)
-        // // this.attachment_4 = this.compareKeys(this.attachment_4)
-        // // this.attachment_5 = this.compareKeys(this.attachment_5)
-
-
+        switch (true) {
+            case this.attachment_1 == stock.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
+                break
+            case this.attachment_1 == rearGrip.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
+                break
+            case this.attachment_1 == optic.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
+                break
+            case this.attachment_1 === magazine.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
+                break
+            case this.attachment_1 === underbarrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
+                break
+            case this.attachment_1 === barrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
+                break
+            case this.attachment_1 === muzzle.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
+                break
+            default:
+                this.attachment_1 = this.rndAllAttachments()
+                break
+        }
+        switch (this.attachment_2 === this.rndAllAttachments()) {
+            case this.attachment_2 === stock.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
+                break
+            case this.attachment_2 === rearGrip.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
+                break
+            case this.attachment_2 === optic.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
+                break
+            case this.attachment_2 === magazine.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
+                break
+            case this.attachment_2 === underbarrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
+                break
+            case this.attachment_2 === barrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
+                break
+            case this.attachment_2 === muzzle.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
+                break
+        }
+        switch (this.attachment_3 === this.rndAllAttachments()) {
+            case this.attachment_3 === stock.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
+                break
+            case this.attachment_3 === rearGrip.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
+                break
+            case this.attachment_3 === optic.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
+                break
+            case this.attachment_3 === magazine.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
+                break
+            case this.attachment_3 === underbarrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
+                break
+            case this.attachment_3 === barrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
+                break
+            case this.attachment_3 === muzzle.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
+                break
+        }
+        switch (this.attachment_4 === this.rndAllAttachments()) {
+            case this.attachment_4 === stock.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
+                break
+            case this.attachment_4 === rearGrip.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
+                break
+            case this.attachment_4 === optic.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
+                break
+            case this.attachment_4 === magazine.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
+                break
+            case this.attachment_4 === underbarrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
+                break
+            case this.attachment_4 === barrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
+                break
+            case this.attachment_4 === muzzle.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
+                break
+        }
+        switch (this.attachment_5 === this.rndAllAttachments()) {
+            case this.attachment_5 === stock.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
+                break
+            case this.attachment_5 === rearGrip.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
+                break
+            case this.attachment_5 === optic.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
+                break
+            case this.attachment_5 === magazine.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
+                break
+            case this.attachment_5 === underbarrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
+                break
+            case this.attachment_5 === barrel.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
+                break
+            case this.attachment_5 === muzzle.values:
+                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
+                break
+        }
     }
     rndBarrel() {
         return ['barrel', barrel[Math.floor(Math.random() * barrel.length)]]
@@ -165,25 +171,17 @@ export class rndAttachments {
     rndAllAttachments() {
         return allAttachmentsList[Math.floor(Math.random() * allAttachmentsList.length)]
     }
-attachGen() {
-    this.attachment_1 = this.rndAllAttachments()
-    this.attachment_2 = this.rndAllAttachments()
-    this.attachment_3 = this.rndAllAttachments()
-    this.attachment_4 = this.rndAllAttachments()
-    this.attachment_5 = this.rndAllAttachments()
+    rndAttachmentSplicer(input) {
+        let splicer = allAttachmentsList.splice(input)
+        return splicer[Math.floor(Math.random() * splicer.length)]
+    }
 }
-}
-// compareAttachments(input) {
-//     const rndAllAttachmentsVar = allAttachmentsList
-//     const attachmentChoice = this.attachGen()
-//     if(attachmentChoice !== attachmentChoice) {
-//         return attachmentChoice
-// }
-
-// const rndAllAttachmentsVar = allAttachmentsList[Math.floor(Math.random() * allAttachmentsList.length)]
-// }
-// function rndAllAttachments() {
-//     return allAttachmentsList[Math.floor(Math.random() * allAttachmentsList.length)]
-     
-// }
 console.log('new rndAttachments', new rndAttachments())
+
+function rndAttachmentSplicer(input) {
+    let filteredList = []
+    let attachmentSplicer = allAttachmentsList.splice(input)
+    filteredList.push(attachmentSplicer)
+    return filteredList
+}
+console.log('splicer test', rndAttachmentSplicer(stock))
