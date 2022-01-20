@@ -34,9 +34,9 @@ export class rndAttachments {
         // this.attachment_5 = this.rndAllAttachments()
 
         switch (true) {
-            case this.attachment_1 = stock.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
-                break
+            // case this.attachment_1 = stock.values:
+            //     this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
+            //     break
             case this.attachment_1 == rearGrip.values:
                 this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
                 break
@@ -183,10 +183,10 @@ export class rndAttachments {
 }
 console.log('new rndAttachments', new rndAttachments())
 
-function rndAttachmentSplicer(input) {
-    let filteredList = []
-    let attachmentSplicer = allAttachmentsList.splice(input)
-    filteredList.push(attachmentSplicer)
-    return filteredList
+function categoryGen() {
+    
+    let categoryList = [barrel, muzzle, underbarrel, magazine, optic, rearGrip, stock]
+    return categoryList[Math.floor(Math.random() * categoryList.length)]
 }
-console.log('splicer test', rndAttachmentSplicer(stock))
+
+console.log('category gen', categoryGen())
