@@ -15,7 +15,7 @@ export const stock = ['stock_slot_1', 'stock_slot_2', 'stock_slot_3', 'stock_slo
 export const allAttachmentsList = muzzle.concat(barrel).concat(underbarrel).concat(magazine).concat(optic).concat(rearGrip).concat(stock)
 
 //
-// - Choose a random category for each attachment
+// - Choose a random category for each attachment [check]
 // - Once a category is selected it cannot be selected again
 // - After all attachments have a category then select a random attachment from that category.
 
@@ -26,131 +26,13 @@ export class rndAttachments {
     attachment_3
     attachment_4
     attachment_5
-    constructor() {
-        // this.attachment_1 = this.rndAllAttachments()
-        // this.attachment_2 = this.rndAllAttachments()
-        // this.attachment_3 = this.rndAllAttachments()
-        // this.attachment_4 = this.rndAllAttachments()
-        // this.attachment_5 = this.rndAllAttachments()
+    constructor() {    
+        this.attachment_1 = this.categoryGen() // - a random attachment category is selected
+        this.attachment_2 = this.categoryGen() 
+        this.attachment_3 = this.categoryGen()
+        this.attachment_4 = this.categoryGen()
+        this.attachment_5 = this.categoryGen()
 
-        switch (true) {
-            // case this.attachment_1 = stock.values:
-            //     this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
-            //     break
-            case this.attachment_1 == rearGrip.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
-                break
-            case this.attachment_1 == optic.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
-                break
-            case this.attachment_1 === magazine.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
-                break
-            case this.attachment_1 === underbarrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
-                break
-            case this.attachment_1 === barrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
-                break
-            case this.attachment_1 === muzzle.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
-                break
-            default:
-                this.attachment_1 = this.rndAllAttachments()
-                break
-        }
-        switch (this.attachment_2 === this.rndAllAttachments()) {
-            case this.attachment_2 === stock.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
-                break
-            case this.attachment_2 === rearGrip.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
-                break
-            case this.attachment_2 === optic.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
-                break
-            case this.attachment_2 === magazine.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
-                break
-            case this.attachment_2 === underbarrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
-                break
-            case this.attachment_2 === barrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
-                break
-            case this.attachment_2 === muzzle.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
-                break
-        }
-        switch (this.attachment_3 === this.rndAllAttachments()) {
-            case this.attachment_3 === stock.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
-                break
-            case this.attachment_3 === rearGrip.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
-                break
-            case this.attachment_3 === optic.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
-                break
-            case this.attachment_3 === magazine.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
-                break
-            case this.attachment_3 === underbarrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
-                break
-            case this.attachment_3 === barrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
-                break
-            case this.attachment_3 === muzzle.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
-                break
-        }
-        switch (this.attachment_4 === this.rndAllAttachments()) {
-            case this.attachment_4 === stock.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
-                break
-            case this.attachment_4 === rearGrip.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
-                break
-            case this.attachment_4 === optic.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
-                break
-            case this.attachment_4 === magazine.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
-                break
-            case this.attachment_4 === underbarrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
-                break
-            case this.attachment_4 === barrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
-                break
-            case this.attachment_4 === muzzle.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
-                break
-        }
-        switch (this.attachment_5 === this.rndAllAttachments()) {
-            case this.attachment_5 === stock.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(stock)
-                break
-            case this.attachment_5 === rearGrip.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(rearGrip)
-                break
-            case this.attachment_5 === optic.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(optic)
-                break
-            case this.attachment_5 === magazine.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(magazine)
-                break
-            case this.attachment_5 === underbarrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(underbarrel)
-                break
-            case this.attachment_5 === barrel.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(barrel)
-                break
-            case this.attachment_5 === muzzle.values:
-                this.rndAllAttachments() === this.rndAttachmentSplicer(muzzle)
-                break
-        }
     }
     rndBarrel() {
         return ['barrel', barrel[Math.floor(Math.random() * barrel.length)]]
@@ -176,17 +58,9 @@ export class rndAttachments {
     rndAllAttachments() {
         return allAttachmentsList[Math.floor(Math.random() * allAttachmentsList.length)]
     }
-    rndAttachmentSplicer(input) {
-        let splicer = allAttachmentsList.splice(input)
-        return splicer[Math.floor(Math.random() * splicer.length)]
+    categoryGen() {
+        let categoryList = [barrel, muzzle, underbarrel, magazine, optic, rearGrip, stock]
+        return categoryList[Math.floor(Math.random() * categoryList.length)]
     }
 }
 console.log('new rndAttachments', new rndAttachments())
-
-function categoryGen() {
-    
-    let categoryList = [barrel, muzzle, underbarrel, magazine, optic, rearGrip, stock]
-    return categoryList[Math.floor(Math.random() * categoryList.length)]
-}
-
-console.log('category gen', categoryGen())
