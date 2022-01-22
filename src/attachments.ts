@@ -27,12 +27,8 @@ export class rndAttachments {
     attachment_4
     attachment_5
     constructor() {    
-        this.attachment_1 = this.categoryGen() // - a random attachment category is selected
-        this.attachment_2 = this.categoryGen() 
-        this.attachment_3 = this.categoryGen()
-        this.attachment_4 = this.categoryGen()
-        this.attachment_5 = this.categoryGen()
-
+        this.categoryGen()
+        
     }
     rndBarrel() {
         return ['barrel', barrel[Math.floor(Math.random() * barrel.length)]]
@@ -60,7 +56,18 @@ export class rndAttachments {
     }
     categoryGen() {
         let categoryList = [barrel, muzzle, underbarrel, magazine, optic, rearGrip, stock]
-        return categoryList[Math.floor(Math.random() * categoryList.length)]
+
+        const randomNumber = Math.floor(Math.random()*categoryList.length)
+        const theRemovedList = categoryList.splice(randomNumber, 1).flat()
+        this.attachment_1 = theRemovedList[Math.floor(Math.random() * theRemovedList.length)]
+
+        const randomNumber2 = Math.floor(Math.random()*categoryList.length)
+        const theRemovedList2 = categoryList.splice(randomNumber2, 1).flat()
+        this.attachment_2 = theRemovedList2[Math.floor(Math.random() * theRemovedList2.length)]
+
+        console.log('attachment_1', this.attachment_1)
+        console.log('attachment_1', this.attachment_2)
+        console.log('categoryList', categoryList)
     }
 }
 console.log('new rndAttachments', new rndAttachments())
