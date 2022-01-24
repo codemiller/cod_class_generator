@@ -13,61 +13,27 @@ export const rearGrip = ['rearGrip_slot_1', 'rearGrip_slot_2', 'rearGrip_slot_3'
 export const stock = ['stock_slot_1', 'stock_slot_2', 'stock_slot_3', 'stock_slot_4', 'stock_slot_5']
 
 export const allAttachmentsList = muzzle.concat(barrel).concat(underbarrel).concat(magazine).concat(optic).concat(rearGrip).concat(stock)
-
-//
-// - Choose a random category for each attachment [check]
-// - Once a category is selected it cannot be selected again
-// - After all attachments have a category then select a random attachment from that category.
-
-
 export class rndAttachments {
     attachment_1
     attachment_2
     attachment_3
     attachment_4
     attachment_5
-    constructor() {    
+    constructor() {
         this.categoryGen()
-        
-    }
-    rndBarrel() {
-        return ['barrel', barrel[Math.floor(Math.random() * barrel.length)]]
-    }
-    rndMuzzle() {
-        return ['muzzle', muzzle[Math.floor(Math.random() * muzzle.length)]]
-    }
-    rndUnderbarrel() {
-        return ['underbarrel', underbarrel[Math.floor(Math.random() * underbarrel.length)]]
-    }
-    rndMagazine() {
-        return ['magazine', magazine[Math.floor(Math.random() * magazine.length)]]
-    }
-    rndOptic() {
-        return ['optic', optic[Math.floor(Math.random() * optic.length)]]
-    }
-    rndRearGrip() {
-        return ['rearGrip', rearGrip[Math.floor(Math.random() * rearGrip.length)]]
-    }
-    rndStock() {
-        return ['stock', stock[Math.floor(Math.random() * stock.length)]]
-    }
-    rndAllAttachments() {
-        return allAttachmentsList[Math.floor(Math.random() * allAttachmentsList.length)]
     }
     categoryGen() {
-        let categoryList = [barrel, muzzle, underbarrel, magazine, optic, rearGrip, stock]
-
-        const randomNumber = Math.floor(Math.random()*categoryList.length)
-        const theRemovedList = categoryList.splice(randomNumber, 1).flat()
-        this.attachment_1 = theRemovedList[Math.floor(Math.random() * theRemovedList.length)]
-
-        const randomNumber2 = Math.floor(Math.random()*categoryList.length)
-        const theRemovedList2 = categoryList.splice(randomNumber2, 1).flat()
-        this.attachment_2 = theRemovedList2[Math.floor(Math.random() * theRemovedList2.length)]
-
-        console.log('attachment_1', this.attachment_1)
-        console.log('attachment_1', this.attachment_2)
-        console.log('categoryList', categoryList)
+        const categoryList = [barrel, muzzle, underbarrel, magazine, optic, rearGrip, stock]
+        let wepGuy = []
+        for (let i = 0; i < 5; i++) {
+            const randomNumber = Math.floor(Math.random() * categoryList.length)
+            const theRemovedList = categoryList.splice(randomNumber, 1).flat()
+            wepGuy[i] = theRemovedList[Math.floor(Math.random() * theRemovedList.length)]
+        }
+        this.attachment_1 = wepGuy[0]
+        this.attachment_2 = wepGuy[1]
+        this.attachment_3 = wepGuy[2]
+        this.attachment_4 = wepGuy[3]
+        this.attachment_5 = wepGuy[4]
     }
 }
-console.log('new rndAttachments', new rndAttachments())
