@@ -1,6 +1,5 @@
 import { Command } from "commander";
 import { Loadout } from "./loadout";
-import { rndPrimaryGun } from "./weapons";
 
 const program = new Command();
 
@@ -19,7 +18,7 @@ program
             --priType sniper
             --priType shotgun
             --priType melee
-
+            
             --secType launcher
             --secType pistol
             --secType melee
